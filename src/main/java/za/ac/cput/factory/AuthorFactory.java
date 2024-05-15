@@ -1,7 +1,5 @@
 package za.ac.cput.factory;
 
-import za.ac.cput.domain.Author;
-
 
 public class AuthorFactory {
     public static Author buildAuthor(String authorID, String firstName, String lastName, String dateofbirth, String emailAddress, String phoneNumber, String nationality ) {
