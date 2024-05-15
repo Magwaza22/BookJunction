@@ -13,9 +13,9 @@ public class Rating {
     private String review;
 
 
-    public Rating (){}
+    protected Rating (){}
 
-    protected Rating (Builder myBuilder){
+    private Rating(Builder myBuilder){
         this.reviewID = myBuilder.reviewID;
         this.firstName = myBuilder.firstName;
         this.lastName = myBuilder.lastName;
@@ -23,9 +23,7 @@ public class Rating {
 
     }
 
-    public Rating(Rating rating) {
 
-    }
 
     public String getReviewID() {
         return reviewID;
@@ -66,36 +64,43 @@ public class Rating {
                 '}';
     }
 
-    public static class Builder{
+    public static class Builder {
         private String reviewID;
-
         private String firstName;
         private String lastName;
-
         private String review;
-    }
 
-    public Rating setReviewID(String reviewID) {
-        this.reviewID = reviewID;
-        return this;
-    }
 
-    public Rating setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
+        public Builder setReviewID(String reviewID) {
+            this.reviewID = reviewID;
+            return this;
+        }
 
-    public Rating setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
+        public Builder setFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
 
-    public Rating setReview(String review) {
-        this.review = review;
-        return this;
-    }
+        public Builder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
 
-    public Rating build(){
-        return new Rating(this);
+        public Builder setReview(String review) {
+            this.review = review;
+            return this;
+        }
+
+        public Builder copy(Rating n) {
+            this.reviewID = n.reviewID;
+            this.firstName = n.firstName;
+            this.lastName = n.lastName;
+            this.review = n.review;
+            return this;
+        }
+
+        public Rating myBuilder() {
+            return new Rating(this);
+        }
     }
 }
